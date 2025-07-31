@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wakefield Print & Signs Solutions | Kenya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003F2D',
+                        secondary: '#C8102E',
+                        dark: '#1B1F1F',
+                        gray: '#7C7C7C',
+                        light: '#FFFFFF'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Disable text selection */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Disable image dragging */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .hero-pattern {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        .floating-btn {
+            animation: pulse 2s infinite;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            height: 280px;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- Floating buttons -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">
+        <a href="https://wa.me/254700000000" target="_blank" class="floating-btn w-14 h-14 rounded-full bg-green-500 flex items-center justify-center text-white shadow-lg">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+        <a href="tel:+254700000000" class="floating-btn w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-white shadow-lg">
+            <i class="fas fa-phone-alt text-xl"></i>
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between py-4">
+                <a href="#" class="flex items-center space-x-3">
+                    <img src="logo.jpg" alt="Wakefield Logo" class="h-16">
+                    <div>
+                        <h1 class="text-2xl font-bold text-primary">WAKEFIELD</h1>
+                        <p class="text-xs text-gray font-medium">PRINT & SIGNS SOLUTIONS</p>
+                    </div>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-dark hover:text-secondary font-medium transition">About</a>
+                    <a href="#services" class="text-dark hover:text-secondary font-medium transition">Services</a>
+                    <a href="#gallery" class="text-dark hover:text-secondary font-medium transition">Gallery</a>
+                    <a href="#contact" class="bg-secondary text-white px-5 py-2 rounded-full font-medium hover:bg-red-700 transition">Contact Us</a>
+                </div>
+                
+                <button class="md:hidden text-dark">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-primary to-secondary">
+        <div class="hero-pattern absolute inset-0"></div>
+        <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+            <div class="max-w-3xl">
+                <h2 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+                    Where Imagination <br> Meets <span class="text-primary">Precision</span>
+                </h2>
+                <p class="text-xl text-white opacity-90 mb-10 max-w-xl">
+                    Transform your vision into impactful visuals with Kenya's premier creative agency
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#services" class="bg-white text-secondary px-8 py-3 rounded-full font-bold text-center hover:bg-gray-100 transition">
+                        Explore Services
+                    </a>
+                    <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold text-center hover:bg-white hover:text-secondary transition">
+                        Get a Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Who We Are</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-gray">
+                    Wakefield Print and Signs is a proudly Kenyan-owned creative agency based in Kitengela. 
+                    We specialize in graphic design, printing, branding, large-format printing, and signage 
+                    solutions — helping businesses bring their vision to life through bold, impactful visuals.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="3d.jpg" alt="Wakefield Team" class="rounded-xl shadow-xl w-full h-auto">
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-dark mb-6">Our Vision & Mission</h3>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold text-secondary mb-3">Our Vision</h4>
+                        <p class="text-gray">
+                            To be the market leader in creative branding and signage across Africa, delivering high-impact solutions that elevate our clients' visibility and growth.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-bold text-secondary mb-3">Our Mission</h4>
+                        <p class="text-gray">
+                            To deliver quality, innovative, and affordable branding solutions that help businesses stand out in a competitive market.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">What We Do</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-gray">
+                    We transform your ideas into powerful visual assets. Our core services include:
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-pen-nib text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Graphic Design</h3>
+                    <p class="text-gray mb-4">
+                        Logos, marketing collateral, custom creatives tailored to your brand identity.
+                    </p>
+                    <img src="3d-design.jpg" alt="Graphic Design" class="rounded-lg">
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-print text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Digital Printing</h3>
+                    <p class="text-gray mb-4">
+                        Flyers, posters, business cards, packaging & more with exceptional quality.
+                    </p>
+                    <img src="3d-shop.jpg" alt="Digital Printing" class="rounded-lg">
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Large Format Printing</h3>
+                    <p class="text-gray mb-4">
+                        Banners, billboards, backdrops & vehicle branding using our 3.2-meter wide printer.
+                    </p>
+                    <img src="3d-road.jpg" alt="Large Format Printing" class="rounded-lg">
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-trademark text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Branding</h3>
+                    <p class="text-gray mb-4">
+                        Corporate wear, promotional items, merchandise to strengthen your brand presence.
+                    </p>
+                    <img src="3d-biz.jpg" alt="Branding" class="rounded-lg">
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-sign text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Signage</h3>
+                    <p class="text-gray mb-4">
+                        3D signs, shopfront branding, wayfinding signs, vehicle wraps for maximum visibility.
+                    </p>
+                    <img src="3d-school.jpg" alt="Signage" class="rounded-lg">
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Industries We Serve</h3>
+                    <p class="text-gray mb-4">
+                        Retail, real estate, events, hospitality, education, health, and more.
+                    </p>
+                    <img src="3d-forest.jpg" alt="Industries" class="rounded-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Work</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-white opacity-80">
+                    Explore our portfolio of exceptional branding and signage solutions
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="3d-biz.jpg" alt="Business Signage">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d-design.jpg" alt="Design Work">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d-forest.jpg" alt="Outdoor Signage">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d-road.jpg" alt="Road Signage">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d-school.jpg" alt="School Signage">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d-shop.jpg" alt="Shop Signage">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d.jpg" alt="Signage Project">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d2.jpg" alt="Creative Design">
+                </div>
+                <div class="gallery-item">
+                    <img src="3d3.jpg" alt="Branding Project">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-primary p-12 text-white">
+                        <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+                        <p class="mb-8 opacity-90">
+                            Ready to bring your vision to life? Contact us today for a consultation and quote.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Our Location</h3>
+                                    <p>Kitengela, Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Call Us</h3>
+                                    <p>+254 700 000 000</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Email Us</h3>
+                                    <p>info@wakefield.co.ke</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-12">
+                        <h2 class="text-2xl font-bold text-primary mb-6">Send a Message</h2>
+                        <form>
+                            <div class="mb-4">
+                                <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <input type="email" placeholder="Your Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                                    <option>Select Service</option>
+                                    <option>Graphic Design</option>
+                                    <option>Digital Printing</option>
+                                    <option>Large Format Printing</option>
+                                    <option>Branding</option>
+                                    <option>Signage</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-secondary text-white py-3 px-6 rounded-lg font-bold hover:bg-red-700 transition">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="logo.jpg" alt="Wakefield Logo" class="h-16">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">WAKEFIELD</h3>
+                            <p class="text-gray text-sm">PRINT & SIGNS SOLUTIONS</p>
+                        </div>
+                    </div>
+                    <p class="text-gray mb-6">
+                        Where imagination meets precision - transforming visions into impactful visuals.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray hover:text-white transition">About Us</a></li>
+                        <li><a href="#services" class="text-gray hover:text-white transition">Services</a></li>
+                        <li><a href="#gallery" class="text-gray hover:text-white transition">Gallery</a></li>
+                        <li><a href="#contact" class="text-gray hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="text-gray hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Our Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray hover:text-white transition">Graphic Design</a></li>
+                        <li><a href="#" class="text-gray hover:text-white transition">Digital Printing</a></li>
+                        <li><a href="#" class="text-gray hover:text-white transition">Large Format Printing</a></li>
+                        <li><a href="#" class="text-gray hover:text-white transition">Branding Solutions</a></li>
+                        <li><a href="#" class="text-gray hover:text-white transition">Signage & Displays</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Contact Us</h3>
+                    <ul class="space-y-3 text-gray">
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-secondary"></i>
+                            <span>Kitengela, Nairobi, Kenya</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-phone-alt mt-1 text-secondary"></i>
+                            <span>+254 700 000 000</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-envelope mt-1 text-secondary"></i>
+                            <span>info@wakefield.co.ke</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray">
+                <p>&copy; 2023 Wakefield Print & Signs Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Source Code Protection Script -->
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        // Disable keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Disable Ctrl+U (View source)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+            }
+            // Disable Ctrl+Shift+I (Developer tools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+            }
+            // Disable F12 (Developer tools)
+            if (e.keyCode === 123) {
+                e.preventDefault();
+            }
+            // Disable Ctrl+C, Ctrl+X, Ctrl+V
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)) {
+                e.preventDefault();
+            }
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
