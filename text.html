@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wakefield Print & Signs Solutions | Kenya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
         :root {
             --vibrant-red: #C8102E;
             --dark-red: #A50021;
@@ -16,66 +13,28 @@
             --dark-gray: #333333;
         }
         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
             background-color: var(--vibrant-red);
             color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
         
-        /* Disable text selection */
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        /* Disable image dragging */
-        img {
-            -webkit-user-drag: none;
-            -khtml-user-drag: none;
-            -moz-user-drag: none;
-            -o-user-drag: none;
-            user-drag: none;
-        }
-        
-        /* Animation for image carousel */
-        @keyframes slide-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-        
-        @keyframes slide-right {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(0); }
-        }
-        
-        .carousel-track {
-            display: inline-block;
-            white-space: nowrap;
-            animation-duration: 40s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-        
-        .top-carousel .carousel-track {
-            animation-name: slide-left;
-        }
-        
-        .bottom-carousel .carousel-track {
-            animation-name: slide-right;
-        }
-        
-        .carousel-track img {
-            height: 200px;
-            margin: 0 15px;
-            display: inline-block;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
+        /* Logo styling */
         .logo-container {
             display: flex;
             justify-content: center;
@@ -87,6 +46,108 @@
             filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
         }
         
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Carousel styling */
+        .carousel-section {
+            padding: 30px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            padding: 20px 0;
+        }
+        
+        .top-carousel .carousel-track {
+            animation: slide-left 80s linear infinite;
+        }
+        
+        .bottom-carousel .carousel-track {
+            animation: slide-right 80s linear infinite;
+        }
+        
+        .carousel-item {
+            margin: 0 15px;
+            perspective: 1000px;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item img {
+            height: 200px;
+            width: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        /* Rotate every 3rd and 7th image */
+        .carousel-item:nth-child(3n) img {
+            transform: rotate(5deg);
+        }
+        
+        .carousel-item:nth-child(7n) img {
+            transform: rotate(-4deg);
+        }
+        
+        /* Add pause effect on hover */
+        .carousel-section:hover .carousel-track {
+            animation-play-state: paused;
+        }
+        
+        .carousel-item:hover img {
+            transform: scale(1.1) rotate(0deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+        
+        /* Keyframes for animation */
+        @keyframes slide-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes slide-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        
+        /* Content sections */
         .content-section {
             background-color: white;
             color: var(--dark-gray);
@@ -94,80 +155,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             padding: 40px;
             margin: 30px auto;
-            max-width: 1200px;
-        }
-        
-        .service-card {
-            transition: all 0.3s ease;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .gallery-item {
-            height: 250px;
-            overflow: hidden;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .floating-btn {
-            animation: pulse 2s infinite;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .floating-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .btn-primary {
-            background-color: var(--vibrant-red);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--dark-red);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         .section-title {
@@ -189,464 +176,504 @@
             border-radius: 2px;
         }
         
-        .contact-card {
+        .about-content {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .filter-btn {
-            background-color: #f1f1f1;
-            color: var(--dark-gray);
-            border-radius: 50px;
-            padding: 8px 20px;
-            margin: 5px;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            border: none;
-            font-weight: 500;
         }
         
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--vibrant-red);
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card h3 {
+            color: var(--vibrant-red);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            perspective: 1000px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            color: var(--vibrant-red);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail i {
+            color: var(--vibrant-red);
+            font-size: 24px;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--vibrant-red);
+            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+        }
+        
+        .contact-form button {
+            background: var(--vibrant-red);
             color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .contact-form button:hover {
+            background: var(--dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--dark-red);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .carousel-item img {
+                height: 150px;
+            }
+            
+            .logo-container img {
+                height: 140px;
+            }
+        }
+        
+        /* Animation enhancements */
+        .carousel-item {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .carousel-item:nth-child(2n) {
+            animation-delay: 0.5s;
+        }
+        
+        .carousel-item:nth-child(3n) {
+            animation-delay: 1s;
+        }
+        
+        .carousel-item:nth-child(4n) {
+            animation-delay: 1.5s;
+        }
+        
+        .carousel-item:nth-child(5n) {
+            animation-delay: 2s;
         }
     </style>
 </head>
 <body>
-    <!-- Floating buttons -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">
-        <a href="https://wa.me/254792957431" target="_blank" class="floating-btn w-14 h-14 rounded-full bg-green-500 flex items-center justify-center text-white">
-            <i class="fab fa-whatsapp text-2xl"></i>
-        </a>
-        <a href="tel:+254792957431" class="floating-btn w-14 h-14 rounded-full bg-white flex items-center justify-center text-red-600">
-            <i class="fas fa-phone-alt text-xl"></i>
-        </a>
-    </div>
-
-    <!-- Logo Display -->
+    <!-- Logo -->
     <div class="logo-container">
-        <img src="logo.jpg" alt="Wakefield Logo">
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Wakefield Logo">
     </div>
-
-    <!-- Animated Image Carousel Section -->
-    <section class="py-8">
-        <div class="top-carousel overflow-hidden py-4">
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="nav-links">
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Animated Carousel -->
+    <section class="carousel-section">
+        <div class="top-carousel">
             <div class="carousel-track">
-                <img src="3d-biz.jpg" alt="3D Business Sign">
-                <img src="3d-design.jpg" alt="3D Design">
-                <img src="3d-forest.jpg" alt="3D Forest Sign">
-                <img src="3d-road.jpg" alt="3D Road Sign">
-                <img src="3d-school.jpg" alt="3D School Sign">
-                <img src="3d-shop.jpg" alt="3D Shop Sign">
-                <img src="3d.jpg" alt="3D Sign">
-                <img src="3d2.jpg" alt="3D Sign 2">
-                <img src="3d3.jpg" alt="3D Sign 3">
-                <img src="backlit.jpg" alt="Backlit Sign">
-                <img src="bloc.jpg" alt="Bloc Sign">
-                <img src="books.jpg" alt="Books">
-                <!-- Duplicate to create seamless loop -->
-                <img src="3d-biz.jpg" alt="3D Business Sign">
-                <img src="3d-design.jpg" alt="3D Design">
-                <img src="3d-forest.jpg" alt="3D Forest Sign">
-                <img src="3d-road.jpg" alt="3D Road Sign">
-                <img src="3d-school.jpg" alt="3D School Sign">
-                <img src="3d-shop.jpg" alt="3D Shop Sign">
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="3D Sign">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="LED Sign">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Road Sign">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1591369822091-8b8a2aacd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Office Sign">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1606220588917-0f4d1d9b0e16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Billboard">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80" alt="Graphic Design">
+                </div>
             </div>
         </div>
         
-        <div class="bottom-carousel overflow-hidden py-4">
+        <div class="bottom-carousel">
             <div class="carousel-track">
-                <img src="bottle.jpg" alt="Bottle">
-                <img src="bottle2.jpg" alt="Bottle 2">
-                <img src="car.jpg" alt="Car Branding">
-                <img src="install.jpg" alt="Installation">
-                <img src="izone.jpg" alt="iZone">
-                <img src="mil.jpg" alt="Military Sign">
-                <img src="milha.jpg" alt="Milha Sign">
-                <img src="mount.jpg" alt="Mounted Sign">
-                <img src="mug.jpg" alt="Mug">
-                <img src="mugs.jpg" alt="Mugs">
-                <img src="print.jpg" alt="Printing">
-                <img src="printer.jpg" alt="Printer">
-                <img src="roll.jpg" alt="Roll">
-                <img src="rollup.jpg" alt="Rollup Banner">
-                <img src="shirts.jpg" alt="Shirts">
-                <img src="tear.jpg" alt="Tear Drop">
-                <img src="vet.jpg" alt="Veterinary Sign">
-                <img src="wall.jpg" alt="Wall Sign">
-                <img src="warn.jpg" alt="Warning Sign">
-                <img src="worker.jpg" alt="Worker">
-                <!-- Duplicate to create seamless loop -->
-                <img src="bottle.jpg" alt="Bottle">
-                <img src="bottle2.jpg" alt="Bottle 2">
-                <img src="car.jpg" alt="Car Branding">
-                <img src="install.jpg" alt="Installation">
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Vehicle Branding">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Installation">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1622407763050-95b8e5c6ca98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="LED Billboard">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1611930022073-02752d3ce3b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Street Sign">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mug Printing">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Shirt Printing">
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Who We Are Section -->
-    <section class="content-section">
-        <h2 class="text-3xl font-bold mb-6 section-title">Who We Are</h2>
-        <div class="prose max-w-none">
-            <p class="text-lg mb-6">
-                Custom Signs & Graphics Enterprise is a premier 3D signs manufacturer based in Nairobi, Kenya. We specialize in the fabrication and installation of:
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <ul class="space-y-2">
-                    <li class="flex items-start">
-                        <i class="fas fa-cube text-red-600 mt-1 mr-2"></i>
-                        <span>3D Signs</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-lightbulb text-red-600 mt-1 mr-2"></i>
-                        <span>LED Signs</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-road text-red-600 mt-1 mr-2"></i>
-                        <span>Street Signs</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-traffic-light text-red-600 mt-1 mr-2"></i>
-                        <span>Traffic & Road Signs</span>
-                    </li>
-                </ul>
-                
-                <ul class="space-y-2">
-                    <li class="flex items-start">
-                        <i class="fas fa-building text-red-600 mt-1 mr-2"></i>
-                        <span>Office & Door Signs</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-restroom text-red-600 mt-1 mr-2"></i>
-                        <span>Restroom Signs</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-bullhorn text-red-600 mt-1 mr-2"></i>
-                        <span>Indoor & Outdoor Billboards</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <p class="text-lg mb-6">
-                We are a full-service signage company, offering end-to-end solutions from on-site surveys, creative design, and logo development to professional fabrication and expert installation.
-            </p>
-            
-            <p class="text-xl font-semibold text-red-600 mb-8">
-                Let us take the hassle out of signage.<br>
-                Contact us today and bring your brand to life with Custom Signs & Graphics Enterprise!
-            </p>
-            
-            <div class="text-center">
-                <a href="#contact" class="btn-primary">
-                    <i class="fas fa-phone-alt mr-2"></i>Contact Us Today
-                </a>
+    
+    <!-- About Section -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Who We Are</h2>
+            <div class="about-content">
+                <p>
+                    Custom Signs & Graphics Enterprise is a premier 3D signs manufacturer based in Nairobi, Kenya. 
+                    We specialize in the fabrication and installation of:
+                </p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3><i class="fas fa-cube"></i> 3D Signs</h3>
+                        <p>Eye-catching dimensional signage that brings your brand to life with depth and perspective.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3><i class="fas fa-lightbulb"></i> LED Signs</h3>
+                        <p>Energy-efficient illuminated signs that make your business stand out day and night.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3><i class="fas fa-road"></i> Street Signs</h3>
+                        <p>Durable and visible signage for effective navigation and wayfinding solutions.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3><i class="fas fa-building"></i> Office & Door Signs</h3>
+                        <p>Professional signage that enhances your corporate identity and office environment.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3><i class="fas fa-restroom"></i> Restroom Signs</h3>
+                        <p>Stylish and compliant signage for all your facility identification needs.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3><i class="fas fa-bullhorn"></i> Billboards</h3>
+                        <p>Large-scale indoor and outdoor advertising solutions for maximum brand exposure.</p>
+                    </div>
+                </div>
+                <p>
+                    We are a full-service signage company, offering end-to-end solutions from on-site surveys, 
+                    creative design, and logo development to professional fabrication and expert installation.
+                </p>
+                <p class="highlight">
+                    Let us take the hassle out of signage. Contact us today and bring your brand to life with 
+                    Custom Signs & Graphics Enterprise!
+                </p>
             </div>
         </div>
     </section>
-
+    
     <!-- Gallery Section -->
-    <section class="content-section">
-        <h2 class="text-3xl font-bold mb-6 section-title">Our Gallery</h2>
-        
-        <div class="flex flex-wrap justify-center mb-8">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="3d-signage">3D Signage</button>
-            <button class="filter-btn" data-filter="large-format">Large Format Printing</button>
-            <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
-            <button class="filter-btn" data-filter="vehicle-branding">Vehicle Branding</button>
-            <button class="filter-btn" data-filter="custom-installation">Custom Installation</button>
-            <button class="filter-btn" data-filter="led-billboards">LED Billboards</button>
-            <button class="filter-btn" data-filter="road-signs">Road & Street Signs</button>
-            <button class="filter-btn" data-filter="printing">Mug and Shirt Printing</button>
-        </div>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="3d-signage">
-                <img src="3d-biz.jpg" alt="3D Business Sign">
-            </div>
-            <div class="gallery-item" data-category="large-format">
-                <img src="rollup.jpg" alt="Rollup Banner">
-            </div>
-            <div class="gallery-item" data-category="graphic-design">
-                <img src="3d-design.jpg" alt="Graphic Design">
-            </div>
-            <div class="gallery-item" data-category="vehicle-branding">
-                <img src="car.jpg" alt="Vehicle Branding">
-            </div>
-            <div class="gallery-item" data-category="custom-installation">
-                <img src="install.jpg" alt="Installation">
-            </div>
-            <div class="gallery-item" data-category="led-billboards">
-                <img src="backlit.jpg" alt="Backlit Sign">
-            </div>
-            <div class="gallery-item" data-category="road-signs">
-                <img src="3d-road.jpg" alt="Road Sign">
-            </div>
-            <div class="gallery-item" data-category="printing">
-                <img src="mug.jpg" alt="Mug Printing">
-            </div>
-            <div class="gallery-item" data-category="3d-signage">
-                <img src="3d-shop.jpg" alt="Shop Sign">
-            </div>
-            <div class="gallery-item" data-category="large-format">
-                <img src="print.jpg" alt="Large Format Print">
-            </div>
-            <div class="gallery-item" data-category="printing">
-                <img src="shirts.jpg" alt="Shirt Printing">
-            </div>
-            <div class="gallery-item" data-category="road-signs">
-                <img src="warn.jpg" alt="Warning Sign">
-            </div>
-            <div class="gallery-item" data-category="3d-signage">
-                <img src="3d-school.jpg" alt="School Sign">
-            </div>
-            <div class="gallery-item" data-category="led-billboards">
-                <img src="bloc.jpg" alt="Bloc Sign">
-            </div>
-            <div class="gallery-item" data-category="graphic-design">
-                <img src="books.jpg" alt="Book Design">
-            </div>
-            <div class="gallery-item" data-category="printing">
-                <img src="bottle.jpg" alt="Bottle Printing">
+    <section id="gallery" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="3D Signage">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Large Format Printing">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80" alt="Graphic Design">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Vehicle Branding">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Custom Installation">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1622407763050-95b8e5c6ca98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="LED Billboards">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1611930022073-02752d3ce3b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Road Signs">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mug Printing">
+                </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
-    <section class="content-section">
-        <h2 class="text-3xl font-bold mb-6 section-title">Contact Us</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="contact-card">
-                <h3 class="text-2xl font-bold text-red-600 mb-6">Get In Touch</h3>
-                
-                <div class="space-y-6">
-                    <div class="flex items-start">
-                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0 mr-4">
-                            <i class="fas fa-phone-alt text-white"></i>
-                        </div>
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt"></i>
                         <div>
-                            <h4 class="font-bold text-lg">Call Us</h4>
-                            <p class="text-gray-700">0792 957 431</p>
+                            <h4>Call Us</h4>
+                            <p>0792 957 431</p>
                         </div>
                     </div>
-                    
-                    <div class="flex items-start">
-                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0 mr-4">
-                            <i class="fas fa-map-marker-alt text-white"></i>
-                        </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <h4 class="font-bold text-lg">Location</h4>
-                            <p class="text-gray-700">Nairobi, Kenya</p>
+                            <h4>Location</h4>
+                            <p>Nairobi, Kenya</p>
                         </div>
                     </div>
-                    
-                    <div class="flex items-start">
-                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0 mr-4">
-                            <i class="fas fa-envelope text-white"></i>
-                        </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
                         <div>
-                            <h4 class="font-bold text-lg">Email</h4>
-                            <p class="text-gray-700">info@wakefieldsigns.co.ke</p>
+                            <h4>Email</h4>
+                            <p>info@wakefieldsigns.co.ke</p>
                         </div>
                     </div>
-                    
-                    <div class="flex items-start">
-                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0 mr-4">
-                            <i class="fas fa-clock text-white"></i>
-                        </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
                         <div>
-                            <h4 class="font-bold text-lg">Working Hours</h4>
-                            <p class="text-gray-700">Monday - Friday: 8:00 AM - 5:00 PM</p>
-                            <p class="text-gray-700">Saturday: 9:00 AM - 1:00 PM</p>
+                            <h4>Working Hours</h4>
+                            <p>Monday-Friday: 8:00 AM - 5:00 PM</p>
+                            <p>Saturday: 9:00 AM - 1:00 PM</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-8">
-                    <h4 class="font-bold text-lg mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-6">Send a Message</h3>
-                <form class="space-y-4">
-                    <div>
-                        <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600">
-                    </div>
-                    
-                    <div>
-                        <input type="email" placeholder="Your Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600">
-                    </div>
-                    
-                    <div>
-                        <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600">
-                    </div>
-                    
-                    <div>
-                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600">
-                            <option>Select Service</option>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Phone Number">
+                        <select>
+                            <option value="" disabled selected>Select Service</option>
                             <option>3D Signage</option>
                             <option>LED Signs</option>
-                            <option>Street Signs</option>
+                            <option>Road & Street Signs</option>
                             <option>Office & Door Signs</option>
-                            <option>Indoor & Outdoor Billboards</option>
+                            <option>Billboards</option>
                             <option>Large Format Printing</option>
                             <option>Vehicle Branding</option>
                             <option>Mug and Shirt Printing</option>
                         </select>
-                    </div>
-                    
-                    <div>
-                        <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-primary w-full">
-                        <i class="fas fa-paper-plane mr-2"></i>Send Message
-                    </button>
-                </form>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
-    <footer class="py-12 bg-gray-900 text-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <img src="logo.jpg" alt="Wakefield Logo" class="h-16">
-                        <div>
-                            <h3 class="text-xl font-bold">WAKEFIELD</h3>
-                            <p class="text-gray-400 text-sm">PRINT & SIGNS SOLUTIONS</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 mb-6">
-                        Transforming visions into impactful visuals - Kenya's premier signage specialists.
-                    </p>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold mb-6">Quick Links</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Gallery</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold mb-6">Our Services</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">3D Signage</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">LED Signs</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Road & Street Signs</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Large Format Printing</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Vehicle Branding</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold mb-6">Contact Info</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-red-600"></i>
-                            <span>Nairobi, Kenya</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone-alt mt-1 mr-3 text-red-600"></i>
-                            <span>0792 957 431</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-red-600"></i>
-                            <span>info@wakefieldsigns.co.ke</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 Wakefield Print & Signs Solutions. All rights reserved.</p>
+                <p class="copyright">© 2023 Wakefield Print & Signs Solutions. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <!-- JavaScript for Gallery Filtering -->
+    
     <script>
-        // Gallery filtering
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    btn.classList.add('active');
-                    
-                    const filter = btn.getAttribute('data-filter');
-                    
-                    galleryItems.forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
+        // Enhance carousel hover effect
+        document.querySelectorAll('.carousel-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                // Add a subtle pulse effect on hover
+                item.style.animation = 'pulse 1s ease-in-out';
+                setTimeout(() => {
+                    item.style.animation = '';
+                }, 1000);
             });
-            
-            // Lightbox functionality
-            galleryItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const imgSrc = this.querySelector('img').src;
-                    const lightbox = document.createElement('div');
-                    lightbox.style.position = 'fixed';
-                    lightbox.style.top = '0';
-                    lightbox.style.left = '0';
-                    lightbox.style.width = '100%';
-                    lightbox.style.height = '100%';
-                    lightbox.style.backgroundColor = 'rgba(0,0,0,0.9)';
-                    lightbox.style.zIndex = '1000';
-                    lightbox.style.display = 'flex';
-                    lightbox.style.justifyContent = 'center';
-                    lightbox.style.alignItems = 'center';
-                    lightbox.style.cursor = 'pointer';
-                    
-                    const img = document.createElement('img');
-                    img.src = imgSrc;
-                    img.style.maxWidth = '90%';
-                    img.style.maxHeight = '90%';
-                    img.style.borderRadius = '8px';
-                    
-                    lightbox.appendChild(img);
-                    document.body.appendChild(lightbox);
-                    
-                    lightbox.addEventListener('click', function() {
-                        document.body.removeChild(lightbox);
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
                     });
-                });
+                }
             });
+        });
+        
+        // Add animation to sections when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
