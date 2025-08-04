@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wakefield Print & Signs Solutions | Kenya</title>
+    <title>Wakefield Print & Signs | Kenya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -18,18 +18,12 @@
                         light: '#FFFFFF'
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
                         'fade-in': 'fadeIn 1s ease-out forwards',
                         'slide-in-left': 'slideInLeft 1s ease-out forwards',
                         'slide-in-right': 'slideInRight 1s ease-out forwards',
-                        'typewriter': 'typewriter 4s steps(40) 1s 1 normal both, blink 750ms steps(40) infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' }
-                        },
                         fadeIn: {
                             '0%': { opacity: 0 },
                             '100%': { opacity: 1 }
@@ -42,13 +36,9 @@
                             '0%': { transform: 'translateX(50px)', opacity: 0 },
                             '100%': { transform: 'translateX(0)', opacity: 1 }
                         },
-                        typewriter: {
-                            'from': { width: '0' },
-                            'to': { width: '24rem' }
-                        },
-                        blink: {
-                            'from, to': { 'border-color': 'transparent' },
-                            '50%': { 'border-color': '#003F2D' }
+                        pulse: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: .5 }
                         }
                     }
                 }
@@ -145,21 +135,27 @@
             transform: scale(1.1);
         }
         
-        .typewriter-container {
-            display: inline-block;
-            position: relative;
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            border: 15px solid white;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
         
-        .typewriter-text {
-            overflow: hidden;
-            border-right: 3px solid #003F2D;
-            white-space: nowrap;
-            display: inline-block;
+        .hero-slide.active {
+            opacity: 1;
         }
         
-        .floating-image {
-            animation: float 6s ease-in-out infinite;
-            filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.2));
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .delayed-animation {
@@ -169,6 +165,11 @@
         .more-delayed {
             animation-delay: 1s;
         }
+        
+        .nav-center {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 <body class="bg-light text-dark">
@@ -177,7 +178,7 @@
         <a href="https://wa.me/254714493648" target="_blank" class="floating-btn w-14 h-14 rounded-full bg-green-500 flex items-center justify-center text-white shadow-lg">
             <i class="fab fa-whatsapp text-2xl"></i>
         </a>
-        <a href="tel:+254714493648" class="floating-btn w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-white shadow-lg">
+        <a href="tel:+254792957431" class="floating-btn w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-white shadow-lg">
             <i class="fas fa-phone-alt text-xl"></i>
         </a>
     </div>
@@ -185,57 +186,50 @@
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-white shadow-sm">
         <div class="container mx-auto px-4">
-            <nav class="flex items-center justify-between py-4">
+            <div class="flex flex-col items-center py-4">
                 <a href="#" class="flex items-center space-x-3">
-                    <img src="logo.jpg" alt="Wakefield Logo" class="h-16 animate-fade-in">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" ></div>
                     <div>
                         <h1 class="text-2xl font-bold text-primary animate-fade-in">WAKEFIELD</h1>
                         <p class="text-xs text-gray font-medium animate-fade-in">PRINT & SIGNS SOLUTIONS</p>
                     </div>
                 </a>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-dark hover:text-secondary font-medium transition animate-slide-in-right">About</a>
-                    <a href="#services" class="text-dark hover:text-secondary font-medium transition animate-slide-in-right delayed-animation">Services</a>
-                    <a href="#gallery" class="text-dark hover:text-secondary font-medium transition animate-slide-in-right more-delayed">Gallery</a>
-                    <a href="#contact" class="bg-secondary text-white px-5 py-2 rounded-full font-medium hover:bg-red-700 transition animate-slide-in-right more-delayed">Contact Us</a>
-                </div>
-                
-                <button class="md:hidden text-dark animate-fade-in">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </nav>
+                <nav class="nav-center mt-4">
+                    <div class="flex space-x-8">
+                        <a href="#about" class="text-dark hover:text-secondary font-medium transition animate-slide-in-right">About</a>
+                        <a href="#services" class="text-dark hover:text-secondary font-medium transition animate-slide-in-right delayed-animation">Services</a>
+                        <a href="#gallery" class="text-dark hover:text-secondary font-medium transition animate-slide-in-right more-delayed">Gallery</a>
+                        <a href="#contact" class="bg-secondary text-white px-5 py-2 rounded-full font-medium hover:bg-red-700 transition animate-slide-in-right more-delayed">Contact Us</a>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section with Animations -->
+    <!-- Hero Section with Image Slideshow -->
     <section class="relative bg-gradient-to-r from-primary to-secondary min-h-screen flex items-center">
         <div class="hero-pattern absolute inset-0"></div>
         
-        <!-- Floating images -->
-        <div class="absolute top-1/4 left-10 floating-image opacity-80 animate-float">
-            <img src="3d-design.jpg" alt="Design" class="w-40 h-40 rounded-xl rotate-12">
-        </div>
-        
-        <div class="absolute top-1/3 right-20 floating-image opacity-80 animate-float" style="animation-delay: 2s">
-            <img src="3d-shop.jpg" alt="Shop" class="w-32 h-32 rounded-xl -rotate-6">
-        </div>
-        
-        <div class="absolute bottom-1/4 left-1/3 floating-image opacity-80 animate-float" style="animation-delay: 3s">
-            <img src="3d-school.jpg" alt="School" class="w-36 h-36 rounded-xl rotate-3">
-        </div>
-        
-        <div class="absolute bottom-1/3 right-10 floating-image opacity-80 animate-float" style="animation-delay: 1s">
-            <img src="3d-biz.jpg" alt="Business" class="w-44 h-44 rounded-xl -rotate-12">
+        <!-- Image Slideshow -->
+        <div class="absolute top-1/2 right-10 transform -translate-y-1/2 w-1/2 h-3/4">
+            <div class="relative w-full h-full">
+                <div class="hero-slide active">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
+                </div>
+                <div class="hero-slide">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
+                </div>
+                <div class="hero-slide">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
+                </div>
+            </div>
         </div>
         
         <div class="container mx-auto px-4 py-20 relative z-10">
-            <div class="max-w-3xl">
+            <div class="max-w-2xl">
                 <h2 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6 animate-slide-in-left">
-                    Where Imagination <br> Meets 
-                    <span class="typewriter-container">
-                        <span class="typewriter-text animate-typewriter inline-block text-primary">Precision</span>
-                    </span>
+                    Where Imagination <br> Meets Precision
                 </h2>
                 <p class="text-xl text-white opacity-90 mb-10 max-w-xl animate-fade-in delayed-animation">
                     Transform your vision into impactful visuals with Kenya's premier creative agency
@@ -275,7 +269,7 @@
             
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="animate-slide-in-left">
-                    <img src="3d.jpg" alt="Wakefield Team" class="rounded-xl shadow-xl w-full h-auto transform transition hover:scale-105 duration-500">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96" ></div>
                 </div>
                 
                 <div class="animate-slide-in-right">
@@ -293,6 +287,17 @@
                         <p class="text-gray">
                             To deliver quality, innovative, and affordable branding solutions that help businesses stand out in a competitive market.
                         </p>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-primary rounded-lg text-white">
+                        <h4 class="text-xl font-bold mb-3">Full-Service Signage Solutions</h4>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>On-site field surveys</li>
+                            <li>Logo and sign design</li>
+                            <li>Professional fabrication</li>
+                            <li>Expert installation</li>
+                        </ul>
+                        <p class="mt-4 italic">Let us handle the complexity—you focus on your brand.</p>
                     </div>
                 </div>
             </div>
@@ -314,13 +319,13 @@
                 <!-- Service 1 -->
                 <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 animate-fade-in">
                     <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-pen-nib text-white text-2xl"></i>
+                        <i class="fas fa-sign text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Graphic Design</h3>
+                    <h3 class="text-xl font-bold text-primary mb-3">3D Signs & Fabrication</h3>
                     <p class="text-gray mb-4">
-                        Logos, marketing collateral, custom creatives tailored to your brand identity.
+                        Custom 3D signs, LED displays, traffic signage, shopfront branding, and billboards.
                     </p>
-                    <img src="3d-design.jpg" alt="Graphic Design" class="rounded-lg">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" ></div>
                 </div>
                 
                 <!-- Service 2 -->
@@ -328,47 +333,47 @@
                     <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-print text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Digital Printing</h3>
+                    <h3 class="text-xl font-bold text-primary mb-3">Large Format Printing</h3>
                     <p class="text-gray mb-4">
-                        Flyers, posters, business cards, packaging & more with exceptional quality.
+                        Our 3.2-meter wide printer handles billboards, banners, vehicle branding, and event displays.
                     </p>
-                    <img src="3d-shop.jpg" alt="Digital Printing" class="rounded-lg">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" ></div>
                 </div>
                 
                 <!-- Service 3 -->
                 <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 animate-fade-in more-delayed">
                     <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-expand text-white text-2xl"></i>
+                        <i class="fas fa-pen-nib text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Large Format Printing</h3>
+                    <h3 class="text-xl font-bold text-primary mb-3">Graphic Design</h3>
                     <p class="text-gray mb-4">
-                        Banners, billboards, backdrops & vehicle branding using our 3.2-meter wide printer.
+                        Logos, marketing materials, event creatives, and brand identity development.
                     </p>
-                    <img src="3d-road.jpg" alt="Large Format Printing" class="rounded-lg">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" ></div>
                 </div>
                 
                 <!-- Service 4 -->
                 <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 animate-fade-in">
                     <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-trademark text-white text-2xl"></i>
+                        <i class="fas fa-tshirt text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Branding</h3>
+                    <h3 class="text-xl font-bold text-primary mb-3">Branding Solutions</h3>
                     <p class="text-gray mb-4">
-                        Corporate wear, promotional items, merchandise to strengthen your brand presence.
+                        Corporate wear, promotional merchandise, and event giveaways.
                     </p>
-                    <img src="3d-biz.jpg" alt="Branding" class="rounded-lg">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" ></div>
                 </div>
                 
                 <!-- Service 5 -->
                 <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 animate-fade-in delayed-animation">
                     <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-sign text-white text-2xl"></i>
+                        <i class="fas fa-directions text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Signage</h3>
+                    <h3 class="text-xl font-bold text-primary mb-3">Directional & Safety Signage</h3>
                     <p class="text-gray mb-4">
-                        3D signs, shopfront branding, wayfinding signs, vehicle wraps for maximum visibility.
+                        Office signs, door signs, vehicle wraps, and safety signage.
                     </p>
-                    <img src="3d-school.jpg" alt="Signage" class="rounded-lg">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" ></div>
                 </div>
                 
                 <!-- Service 6 -->
@@ -380,7 +385,38 @@
                     <p class="text-gray mb-4">
                         Retail, real estate, events, hospitality, education, health, and more.
                     </p>
-                    <img src="3d-forest.jpg" alt="Industries" class="rounded-lg">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" ></div>
+                </div>
+            </div>
+            
+            <!-- Why Choose Us -->
+            <div class="mt-20 bg-primary rounded-2xl p-8 text-white animate-fade-in">
+                <h3 class="text-2xl font-bold mb-6 text-center">Why Choose Wakefield?</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users-cog text-xl"></i>
+                        </div>
+                        <p>Experienced team with local roots and global standards</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-paint-brush text-xl"></i>
+                        </div>
+                        <p>In-house design and print specialists</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-medal text-xl"></i>
+                        </div>
+                        <p>Quality materials and finish</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-truck text-xl"></i>
+                        </div>
+                        <p>Fast turnaround and professional installation</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -398,33 +434,40 @@
             </div>
             
             <div class="gallery-grid">
+                <!-- We'll show 9 images as a preview -->
                 <div class="gallery-item animate-fade-in">
-                    <img src="3d-biz.jpg" alt="Business Signage">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in delayed-animation">
-                    <img src="3d-design.jpg" alt="Design Work">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in">
-                    <img src="3d-forest.jpg" alt="Outdoor Signage">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in more-delayed">
-                    <img src="3d-road.jpg" alt="Road Signage">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in">
-                    <img src="3d-school.jpg" alt="School Signage">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in delayed-animation">
-                    <img src="3d-shop.jpg" alt="Shop Signage">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in">
-                    <img src="3d.jpg" alt="Signage Project">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in more-delayed">
-                    <img src="3d2.jpg" alt="Creative Design">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
                 <div class="gallery-item animate-fade-in">
-                    <img src="3d3.jpg" alt="Branding Project">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" ></div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-10 animate-fade-in">
+                <button class="bg-secondary text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">
+                    View Full Gallery
+                </button>
             </div>
         </div>
     </section>
@@ -457,6 +500,17 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold">Call Us</h3>
+                                    <p>+254 714 493 648</p>
+                                    <p>+254 792 957 431</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">WhatsApp</h3>
                                     <p>+254 714 493 648</p>
                                 </div>
                             </div>
@@ -520,7 +574,7 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
-                        <img src="logo.jpg" alt="Wakefield Logo" class="h-16">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" ></div>
                         <div>
                             <h3 class="text-xl font-bold text-white">WAKEFIELD</h3>
                             <p class="text-gray text-sm">PRINT & SIGNS SOLUTIONS</p>
@@ -576,7 +630,11 @@
                         </li>
                         <li class="flex items-start space-x-3">
                             <i class="fas fa-phone-alt mt-1 text-secondary"></i>
-                            <span>+254 700 000 000</span>
+                            <span>+254 714 493 648</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fab fa-whatsapp mt-1 text-secondary"></i>
+                            <span>+254 714 493 648</span>
                         </li>
                         <li class="flex items-start space-x-3">
                             <i class="fas fa-envelope mt-1 text-secondary"></i>
@@ -592,14 +650,50 @@
         </div>
     </footer>
 
-    <!-- Source Code Protection Script -->
+    <!-- JavaScript for slideshow and animations -->
     <script>
-        // Disable right-click
+        // Image slideshow functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[n].classList.add('active');
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            // Start slideshow
+            setInterval(nextSlide, 5000);
+            
+            // Initialize first slide
+            showSlide(currentSlide);
+            
+            // Animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // Source code protection
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
         
-        // Disable keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             // Disable Ctrl+U (View source)
             if (e.ctrlKey && e.keyCode === 85) {
@@ -613,30 +707,10 @@
             if (e.keyCode === 123) {
                 e.preventDefault();
             }
-            // Disable Ctrl+C, Ctrl+X, Ctrl+V
-            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)) {
-                e.preventDefault();
-            }
         });
         
-        // Disable text selection
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
-        });
-        
-        // Animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
         });
     </script>
 </body>
