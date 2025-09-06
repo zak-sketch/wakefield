@@ -31,7 +31,7 @@
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Only one Font Awesome stylesheet (remove duplicate) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -252,6 +252,9 @@
         .hero-image:hover img {
             transform: scale(1.1);
         }
+        
+        <!-- Optimize images for lazy loading and add preload for hero image -->
+        <link rel="preload" as="image" href="3d2.jpg">
         
         /* Services Section */
         .services {
@@ -809,7 +812,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="logo.jpg" alt="Wakefield Logo">
+                    <img src="logo.jpg" alt="Wakefield Logo" loading="lazy">
                     
                 </div>
                 
@@ -860,7 +863,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="3d-road.jpg" alt="3D Signage">
+                        <img src="3d-road.jpg" alt="3D Signage" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>3D Signs & Fabrication</h3>
@@ -871,7 +874,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="print.jpg" alt="Printing Services">
+                        <img src="print.jpg" alt="Printing Services" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Large Format Printing 3.2 Meters Wide </h3>
@@ -882,7 +885,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="tear.jpg" alt="Graphic Design">
+                        <img src="tear.jpg" alt="Graphic Design" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Graphic Design</h3>
@@ -893,7 +896,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="wall.jpg" alt="Branding Solutions">
+                        <img src="wall.jpg" alt="Branding Solutions" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Branding Solutions</h3>
@@ -916,7 +919,7 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="3d-biz.jpg" alt="Business Signage">
+                    <img src="3d-biz.jpg" alt="Business Signage" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Corporate Branding</h3>
                         <p>3D signage for business center</p>
@@ -924,7 +927,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="3d-design.jpg" alt="Creative Design">
+                    <img src="3d-design.jpg" alt="Creative Design" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Creative Design</h3>
                         <p>Innovative sign solutions</p>
@@ -932,7 +935,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="3d-forest.jpg" alt="Outdoor Signage">
+                    <img src="3d-forest.jpg" alt="Outdoor Signage" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Outdoor Signage</h3>
                         <p>Durable outdoor installation</p>
@@ -940,7 +943,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="3d-road.jpg" alt="Road Signage">
+                    <img src="3d-road.jpg" alt="Road Signage" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Road Signage</h3>
                         <p>High-visibility traffic signs</p>
@@ -948,7 +951,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="3d-school.jpg" alt="School Signage">
+                    <img src="3d-school.jpg" alt="School Signage" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Educational Signage</h3>
                         <p>School campus wayfinding</p>
@@ -956,7 +959,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="3d-shop.jpg" alt="Retail Signage">
+                    <img src="3d-shop.jpg" alt="Retail Signage" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Retail Branding</h3>
                         <p>Shopfront signage solution</p>
@@ -964,7 +967,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="backlit.jpg" alt="Backlit Sign">
+                    <img src="backlit.jpg" alt="Backlit Sign" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Backlit Signage</h3>
                         <p>24/7 visibility solution</p>
@@ -972,7 +975,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="rollup.jpg" alt="Roll Up Banner">
+                    <img src="rollup.jpg" alt="Roll Up Banner" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Roll Up Banner</h3>
                         <p>Portable display solution</p>
@@ -980,7 +983,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="shirts.jpg" alt="Branded Apparel">
+                    <img src="shirts.jpg" alt="Branded Apparel" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Branded Apparel</h3>
                         <p>Corporate wear printing</p>
@@ -988,7 +991,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="bottle.jpg" alt="Promotional Items">
+                    <img src="bottle.jpg" alt="Promotional Items" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Promotional Items</h3>
                         <p>Custom branded merchandise</p>
@@ -996,7 +999,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="car.jpg" alt="Vehicle Branding">
+                    <img src="car.jpg" alt="Vehicle Branding" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Vehicle Branding</h3>
                         <p>Mobile advertising solution</p>
@@ -1004,7 +1007,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="wall.jpg" alt="Wall Graphics">
+                    <img src="wall.jpg" alt="Wall Graphics" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Wall Graphics</h3>
                         <p>Indoor branding solution</p>
@@ -1089,22 +1092,22 @@
                     <form>
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="Your Name">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="Your Email">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="Your Phone">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="service">Service Interested In</label>
-                            <select id="service">
+                            <select id="service" name="service" required>
                                 <option value="">Select a Service</option>
                                 <option value="signage">3D Signs & Fabrication</option>
                                 <option value="printing">Large Format Printing</option>
@@ -1116,7 +1119,7 @@
                         
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" placeholder="Tell us about your project..."></textarea>
+                            <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">Send Message</button>
@@ -1190,28 +1193,28 @@
         </a>
     </div>
 
-    <script>
+    <!-- Move script to end of body and add defer for faster parsing -->
+    <script defer>
         // Simple scroll animation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
-        
+
         // Mobile menu toggle
         const mobileToggle = document.querySelector('.mobile-toggle');
         const nav = document.querySelector('nav');
-        
+
         mobileToggle.addEventListener('click', () => {
             nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         });
-        
+
         // Update year in footer
-        document.querySelector('.copyright p').innerHTML = 
+        document.querySelector('.copyright p').innerHTML =
             `&copy; ${new Date().getFullYear()} Wakefield Print & Signs Solutions. All Rights Reserved.`;
     </script>
 </body>
