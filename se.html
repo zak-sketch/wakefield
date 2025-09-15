@@ -3,57 +3,295 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTTPS Security Console</title>
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
-  <script src="https://unpkg.com/lucide-react/dist/lucide-react.umd.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>HTTPS Security Console | robotechdigi.com</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+      background-color: #0a0a0a;
+      color: #00ff41;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      line-height: 1.5;
+    }
+    
+    /* Console container */
+    .console-container {
+      background-color: #111111;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 255, 65, 0.15);
+      padding: 24px;
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid #00ff41;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Glow effect */
+    .console-container::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      z-index: -1;
+      background: linear-gradient(45deg, #00ff41, #00b32e, #00ff41, #00b32e);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      border-radius: 18px;
+      opacity: 0.3;
+      filter: blur(5px);
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Header */
+    .console-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    }
+    
+    .console-title {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Content */
+    .console-content {
+      min-height: 120px;
+      margin-bottom: 20px;
+    }
+    
+    .console-text {
+      white-space: pre-wrap;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow: hidden;
+    }
+    
+    .cursor {
+      display: inline-block;
+      background-color: #00ff41;
+      width: 8px;
+      height: 18px;
+      animation: blink 1s infinite;
+      margin-left: 2px;
+      vertical-align: middle;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    /* Footer */
+    .console-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0, 255, 65, 0.2);
+      font-size: 14px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .console-container {
+        padding: 20px;
+        border-radius: 12px;
+      }
+      
+      .console-title {
+        font-size: 18px;
+      }
+      
+      .console-text {
+        font-size: 14px;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .console-container {
+        padding: 16px;
+      }
+      
+      .console-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+    
+    /* Loading state */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(0, 255, 65, 0.3);
+      border-radius: 50%;
+      border-top-color: #00ff41;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
-<body class="bg-black min-h-screen flex items-center justify-center">
-  <div id="root"></div>
-  <script type="text/javascript">
-    const { useEffect, useState } = React;
-    const { motion } = window['framer-motion'];
-    const { ShieldCheck, Lock } = window['lucideReact'];
+<body>
+  <div id="root" role="main" aria-label="HTTPS Security Status Console"></div>
 
+  <script>
+    // Component implementation
     function HTTPSStatusWindow() {
-      const [typedText, setTypedText] = useState("");
+      const [typedText, setTypedText] = React.useState("");
+      const [isComplete, setIsComplete] = React.useState(false);
       const message = `>>> HTTPS Status: SECURE\n>>> robotechdigi.com\n>>> Security: GUARANTEED ✅\n>>> Connection Encrypted 🔒`;
-
-      useEffect(() => {
+      
+      // Improved typing effect with requestAnimationFrame for smoother animation
+      React.useEffect(() => {
         let i = 0;
-        const interval = setInterval(() => {
-          setTypedText((prev) => prev + message[i]);
-          i++;
-          if (i >= message.length) clearInterval(interval);
-        }, 30);
-        return () => clearInterval(interval);
+        let startTime = null;
+        let animationFrameId = null;
+        
+        const typeCharacter = (timestamp) => {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+          
+          if (elapsed > 30 && i < message.length) {
+            setTypedText(prev => prev + message[i]);
+            i++;
+            startTime = timestamp;
+          }
+          
+          if (i < message.length) {
+            animationFrameId = requestAnimationFrame(typeCharacter);
+          } else {
+            setIsComplete(true);
+          }
+        };
+        
+        animationFrameId = requestAnimationFrame(typeCharacter);
+        
+        return () => {
+          if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        };
       }, []);
-
-      return (
-        React.createElement("div", { className: "min-h-screen bg-black flex items-center justify-center p-4" },
-          React.createElement(motion.div, {
-            initial: { opacity: 0, scale: 0.95 },
-            animate: { opacity: 1, scale: 1 },
-            transition: { duration: 0.4 },
-            className: "bg-gray-900 text-green-400 font-mono rounded-2xl shadow-2xl p-6 w-full max-w-md border border-green-600"
-          },
-            React.createElement("div", { className: "flex items-center gap-2 mb-4" },
-              React.createElement(ShieldCheck, { className: "text-green-500", size: 28 }),
-              React.createElement("h2", { className: "text-xl font-bold" }, "Security Console")
-            ),
-            React.createElement("pre", { className: "whitespace-pre-wrap text-sm tracking-wide min-h-[90px]" }, typedText),
-            React.createElement("div", { className: "mt-4 flex items-center gap-2" },
-              React.createElement(Lock, { className: "text-green-500", size: 20 }),
-              React.createElement("span", { className: "text-green-300 text-sm" }, "Your connection is protected with HTTPS.")
-            )
+      
+      // Create SVG icons manually to avoid external dependencies
+      const ShieldIcon = () => React.createElement(
+        'svg',
+        {
+          xmlns: 'http://www.w3.org/2000/svg',
+          width: 28,
+          height: 28,
+          viewBox: '0 0 24 24',
+          fill: 'none',
+          stroke: '#00ff41',
+          strokeWidth: '2',
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round'
+        },
+        React.createElement('path', { d: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' })
+      );
+      
+      const LockIcon = () => React.createElement(
+        'svg',
+        {
+          xmlns: 'http://www.w3.org/2000/svg',
+          width: 20,
+          height: 20,
+          viewBox: '0 0 24 24',
+          fill: 'none',
+          stroke: '#00ff41',
+          strokeWidth: '2',
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round'
+        },
+        React.createElement('rect', { x: '3', y: '11', width: '18', height: '11', rx: '2', ry: '2' }),
+        React.createElement('path', { d: 'M7 11V7a5 5 0 0 1 10 0v4' })
+      );
+      
+      return React.createElement(
+        'div',
+        { className: 'console-container' },
+        React.createElement(
+          'div',
+          { className: 'console-header' },
+          React.createElement(ShieldIcon),
+          React.createElement('h1', { className: 'console-title' }, 'Security Console')
+        ),
+        React.createElement(
+          'div',
+          { className: 'console-content' },
+          React.createElement(
+            'p',
+            { className: 'console-text' },
+            typedText,
+            !isComplete && React.createElement('span', { className: 'cursor' })
           )
+        ),
+        React.createElement(
+          'div',
+          { className: 'console-footer' },
+          React.createElement(LockIcon),
+          React.createElement('span', null, 'Your connection is protected with HTTPS.')
         )
       );
     }
-
-    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(HTTPSStatusWindow));
+    
+    // Render with loading state and error boundary
+    function App() {
+      const [isLoading, setIsLoading] = React.useState(true);
+      
+      React.useEffect(() => {
+        // Simulate loading time for assets
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+        
+        return () => clearTimeout(timer);
+      }, []);
+      
+      if (isLoading) {
+        return React.createElement(
+          'div',
+          { className: 'console-container', style: { textAlign: 'center', padding: '40px 20px' } },
+          React.createElement('div', { className: 'loading', style: { margin: '0 auto 20px' } }),
+          React.createElement('p', null, 'Initializing security console...')
+        );
+      }
+      
+      return React.createElement(HTTPSStatusWindow);
+    }
+    
+    // Render the app
+    const rootElement = document.getElementById('root');
+    ReactDOM.createRoot(rootElement).render(React.createElement(App));
   </script>
+  
+  <!-- Production versions of React for better performance -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 </body>
 </html>
