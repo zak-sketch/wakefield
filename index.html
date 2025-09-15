@@ -1225,5 +1225,48 @@
         document.querySelector('.copyright p').innerHTML =
             `&copy; ${new Date().getFullYear()} Wakefield Print & Signs Solutions. All Rights Reserved.`;
     </script>
+    <script>
+(function () {
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    return false;
+  }, { passive: false });
+
+  // Disable text selection and dragging
+  document.addEventListener('selectstart', function (e) {
+    e.preventDefault();
+    return false;
+  }, false);
+  document.addEventListener('dragstart', function (e) {
+    e.preventDefault();
+    return false;
+  }, false);
+
+  // Disable common key combos for viewing source / devtools
+  document.addEventListener('keydown', function (e) {
+    const ctrlOrCmd = e.ctrlKey || e.metaKey;
+
+    // F12 (DevTools)
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+
+    // Ctrl+Shift+I / Cmd+Opt+I
+    if (ctrlOrCmd && e.shiftKey && (e.key.toLowerCase() === 'i')) { e.preventDefault(); return false; }
+
+    // Ctrl+Shift+J / Cmd+Opt+J
+    if (ctrlOrCmd && e.shiftKey && (e.key.toLowerCase() === 'j')) { e.preventDefault(); return false; }
+
+    // Ctrl+U / Cmd+U (View Source)
+    if (ctrlOrCmd && (e.key.toLowerCase() === 'u')) { e.preventDefault(); return false; }
+
+    // Ctrl+Shift+C (Inspect Element)
+    if (ctrlOrCmd && e.shiftKey && (e.key.toLowerCase() === 'c')) { e.preventDefault(); return false; }
+
+    // Optional: Ctrl+S / Cmd+S (Save Page)
+    if (ctrlOrCmd && (e.key.toLowerCase() === 's')) { e.preventDefault(); return false; }
+  }, false);
+})();
+</script>
+
 </body>
 </html>
