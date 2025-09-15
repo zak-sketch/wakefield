@@ -1,39 +1,59 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { ShieldCheck, Lock } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTPS Security Console</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  <script src="https://unpkg.com/lucide-react/dist/lucide-react.umd.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black min-h-screen flex items-center justify-center">
+  <div id="root"></div>
+  <script type="text/javascript">
+    const { useEffect, useState } = React;
+    const { motion } = window['framer-motion'];
+    const { ShieldCheck, Lock } = window['lucideReact'];
 
-export default function HTTPSStatusWindow() {
-  const [typedText, setTypedText] = useState("");
-  const message = `>>> HTTPS Status: SECURE\n>>> robotechdigi.com\n>>> Security: GUARANTEED ✅\n>>> Connection Encrypted 🔒`;
+    function HTTPSStatusWindow() {
+      const [typedText, setTypedText] = useState("");
+      const message = `>>> HTTPS Status: SECURE\n>>> robotechdigi.com\n>>> Security: GUARANTEED ✅\n>>> Connection Encrypted 🔒`;
 
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setTypedText((prev) => prev + message[i]);
-      i++;
-      if (i >= message.length) clearInterval(interval);
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
+      useEffect(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+          setTypedText((prev) => prev + message[i]);
+          i++;
+          if (i >= message.length) clearInterval(interval);
+        }, 30);
+        return () => clearInterval(interval);
+      }, []);
 
-  return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="bg-gray-900 text-green-400 font-mono rounded-2xl shadow-2xl p-6 w-full max-w-2xl border border-green-600"
-      >
-        <div className="flex items-center gap-2 mb-4">
-          <ShieldCheck className="text-green-500" />
-          <h2 className="text-xl font-bold">Security Console</h2>
-        </div>
-        <pre className="whitespace-pre-wrap text-sm tracking-wide">{typedText}<span className="animate-pulse">█</span></pre>
-        <div className="mt-4 flex items-center gap-2">
-          <Lock className="text-green-500" />
-          <span className="text-green-300 text-sm">Your connection is protected with HTTPS.</span>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
+      return (
+        React.createElement("div", { className: "min-h-screen bg-black flex items-center justify-center p-4" },
+          React.createElement(motion.div, {
+            initial: { opacity: 0, scale: 0.95 },
+            animate: { opacity: 1, scale: 1 },
+            transition: { duration: 0.4 },
+            className: "bg-gray-900 text-green-400 font-mono rounded-2xl shadow-2xl p-6 w-full max-w-md border border-green-600"
+          },
+            React.createElement("div", { className: "flex items-center gap-2 mb-4" },
+              React.createElement(ShieldCheck, { className: "text-green-500", size: 28 }),
+              React.createElement("h2", { className: "text-xl font-bold" }, "Security Console")
+            ),
+            React.createElement("pre", { className: "whitespace-pre-wrap text-sm tracking-wide min-h-[90px]" }, typedText),
+            React.createElement("div", { className: "mt-4 flex items-center gap-2" },
+              React.createElement(Lock, { className: "text-green-500", size: 20 }),
+              React.createElement("span", { className: "text-green-300 text-sm" }, "Your connection is protected with HTTPS.")
+            )
+          )
+        )
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(HTTPSStatusWindow));
+  </script>
+</body>
+</html>
