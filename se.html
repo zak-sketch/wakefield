@@ -28,7 +28,7 @@ export default function HTTPSStatusWindow() {
           <ShieldCheck className="text-green-500" />
           <h2 className="text-xl font-bold">Security Console</h2>
         </div>
-        <pre className="whitespace-pre-wrap text-sm tracking-wide">{typedText}</pre>
+        <pre className="whitespace-pre-wrap text-sm tracking-wide">{typedText}<span className="animate-pulse">█</span></pre>
         <div className="mt-4 flex items-center gap-2">
           <Lock className="text-green-500" />
           <span className="text-green-300 text-sm">Your connection is protected with HTTPS.</span>
